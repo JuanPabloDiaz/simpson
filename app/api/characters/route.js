@@ -27,6 +27,11 @@
 
 import characters from '@/data/characters.json'
 import { NextResponse } from 'next/server'
+import { setCorsHeaders, handleCorsOptions } from '@/lib/cors'
+
+export async function OPTIONS() {
+  return handleCorsOptions()
+}
 
 export async function GET() {
   // Transform Simpsons character data to match the expected format
@@ -56,5 +61,6 @@ export async function GET() {
   response.headers.set('Pragma', 'no-cache')
   response.headers.set('Expires', '0')
   
-  return response
+  // Add CORS headers
+  return setCorsHeaders(response)
 }

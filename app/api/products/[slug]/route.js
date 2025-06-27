@@ -60,6 +60,11 @@
 
 import products from '@/data/products.json'
 import { NextResponse } from 'next/server'
+import { setCorsHeaders, handleCorsOptions } from '@/lib/cors'
+
+export async function OPTIONS() {
+  return handleCorsOptions()
+}
 
 export async function GET(req, { params }) {
   try {
@@ -112,7 +117,8 @@ export async function GET(req, { params }) {
     response.headers.set('Pragma', 'no-cache')
     response.headers.set('Expires', '0')
     
-    return response
+    // Add CORS headers
+    return setCorsHeaders(response)
   } catch (error) {
     return new NextResponse('Internal Server Error', { status: 500 })
   }
