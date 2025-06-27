@@ -95,23 +95,21 @@ export default function EpisodesPage() {
               className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow border-2 border-blue-900"
             >
               <div className="p-3 bg-blue-400 text-center font-bold border-b-2 border-blue-900">
-                <h2 className="text-lg text-blue-900 truncate">{episode.title}</h2>
+                <h2 className="text-lg text-blue-900 truncate">{episode.name}</h2>
               </div>
               
-              {episode.image && (
-                <div className="relative h-48 w-full">
-                  <Image 
-                    src={episode.image} 
-                    alt={episode.title} 
-                    fill
-                    className="object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null
-                      e.target.src = 'https://via.placeholder.com/400x200?text=Episode'
-                    }}
-                  />
-                </div>
-              )}
+              <div className="relative h-48 w-full">
+                <Image 
+                  src={episode.thumbnailUrl || 'https://via.placeholder.com/400x200?text=Episode'} 
+                  alt={episode.name} 
+                  fill
+                  className="object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null
+                    e.target.src = 'https://via.placeholder.com/400x200?text=Episode'
+                  }}
+                />
+              </div>
               
               <div className="p-4">
                 <div className="flex justify-between mb-2">
