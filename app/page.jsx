@@ -11,13 +11,6 @@ import { Container } from '@/components'
 export default function HomePage() {
   const sections = [
     {
-      title: 'Characters',
-      description: 'Meet your favorite Springfield residents',
-      link: '/characters',
-      color: 'bg-yellow-400',
-      icon: 'mdi:account-group'
-    },
-    {
       title: 'Episodes',
       description: 'Browse all episodes from the series',
       link: '/episodes',
@@ -30,6 +23,13 @@ export default function HomePage() {
       link: '/products',
       color: 'bg-green-400',
       icon: 'mdi:cart'
+    },
+    {
+      title: 'Characters',
+      description: 'Meet your favorite Springfield residents (Coming soon)',
+      link: '/characters',
+      color: 'bg-yellow-400',
+      icon: 'mdi:account-group'
     },
     {
       title: 'API Docs',

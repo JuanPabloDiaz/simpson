@@ -109,7 +109,7 @@ export default function CharacterDetailPage({ params }) {
         &larr; Back to All Characters
       </Link>
 
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden text-black">
         {/* Character header */}
         <div className="bg-yellow-400 p-4">
           <h1 className="text-3xl font-bold text-center">{character.name}</h1>

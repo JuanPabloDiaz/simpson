@@ -16,9 +16,9 @@ export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const navItems = [
-    { name: 'Characters', href: '/characters', icon: <FaUsers size={20} /> },
     { name: 'Episodes', href: '/episodes', icon: <FaTv size={20} /> },
     { name: 'Products', href: '/products', icon: <FaShoppingCart size={20} /> },
+    { name: 'Characters', href: '/characters', icon: <FaUsers size={20} /> },
     { name: 'API Docs', href: '/api-docs', icon: <FaBook size={20} /> }
   ];
 

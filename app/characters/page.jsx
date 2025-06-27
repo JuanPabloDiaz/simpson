@@ -83,8 +83,14 @@ export default function CharactersPage() {
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4">
             Simpsons Characters
           </h1>
+          <h2 className="text-2xl font-bold text-blue-900 mb-4">Coming soon...</h2>
           <p className="text-xl text-blue-800 max-w-2xl mx-auto">
             Meet the residents of Springfield! Total characters: {characters.length}
+          </p>
+          <p className="pt-2 text-xl text-blue-800 max-w-2xl mx-auto">
+            Currenly looking for cleaner data <a className="font-bold text-blue-900 hover:underline" href="/api/characters">
+              characters API
+            </a>
           </p>
         </div>
 
@@ -94,16 +100,16 @@ export default function CharactersPage() {
               key={character.id || character.name} 
               className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow border-2 border-blue-900"
             >
-              <div className="p-2 bg-yellow-400 text-center font-bold truncate border-b-2 border-blue-900">
+              <div className="p-2 bg-yellow-400 text-blue-900 text-center font-bold truncate border-b-2 border-blue-900">
                 {character.name}
               </div>
               <div className="p-4 text-center">
-                <p className="text-sm text-gray-600 mb-2">
+                {/* <p className="text-sm text-gray-600 mb-2">
                   {character.normalized_name || 'Springfield Resident'}
-                </p>
+                </p> */}
                 <Link 
                   href={`/characters/${character.slug}`}
-                  className="block text-center bg-blue-900 text-white py-2 px-4 rounded-full hover:bg-blue-800 transition-colors"
+                  className="block text-center bg-blue-900 text-white text-xs py-2 px-4 rounded-full hover:bg-blue-800 transition-colors"
                 >
                   View Details
                 </Link>
