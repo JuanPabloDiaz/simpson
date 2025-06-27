@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { Navigation } from '@/components'
+import { Navigation, Footer } from '@/components'
 import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,9 +16,12 @@ export default function RootLayout({ children }) {
       <head>
         <Script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" strategy="afterInteractive" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Navigation />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />  
       </body>
     </html>
   )

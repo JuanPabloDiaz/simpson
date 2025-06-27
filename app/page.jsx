@@ -41,7 +41,7 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
+    <div className="bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
       <Container>
         <div className="text-center mb-12">
           <div className="flex justify-center mb-4">
@@ -72,13 +72,7 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-blue-900 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-blue-800 transition-colors">
-            <Link href="/api-docs">Explore the API</Link>
-          </div>
-        </div>
       </Container>
-    </main>
+    </div>
   );
 }
