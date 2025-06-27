@@ -1,4 +1,40 @@
 /**
+ * @swagger
+ * /api/characters/{slug}:
+ *   get:
+ *     summary: Retrieves a specific Simpsons character by slug
+ *     tags: [Characters]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The slug of the character
+ *     responses:
+ *       200:
+ *         description: Character details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 character:
+ *                   $ref: '#/components/schemas/Character'
+ *                 character_quotes:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       quote:
+ *                         type: string
+ *       404:
+ *         description: Character not found
+ *       500:
+ *         description: Server error
+ */
+
+/**
  * Retrieves a Simpsons character and their associated quotes based on the provided slug.
  *
  * @param {Object} req - The request object.

@@ -1,4 +1,54 @@
 /**
+ * @swagger
+ * /api/products/{slug}:
+ *   get:
+ *     summary: Retrieves a specific Simpsons product by slug
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The slug of the product
+ *     responses:
+ *       200:
+ *         description: Product details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 product:
+ *                   allOf:
+ *                     - $ref: '#/components/schemas/Product'
+ *                     - type: object
+ *                       properties:
+ *                         details:
+ *                           type: string
+ *                         mainImage:
+ *                           type: string
+ *                         images:
+ *                           type: array
+ *                           items:
+ *                             type: string
+ *                         price:
+ *                           type: string
+ *                         inStock:
+ *                           type: boolean
+ *                         rating:
+ *                           type: string
+ *                         relatedProducts:
+ *                           type: array
+ *                           items:
+ *                             type: string
+ *       404:
+ *         description: Product not found
+ *       500:
+ *         description: Server error
+ */
+
+/**
  * Retrieves a Simpsons product based on the provided slug.
  *
  * @param {Object} req - The request object.

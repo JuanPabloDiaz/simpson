@@ -1,4 +1,48 @@
 /**
+ * @swagger
+ * /api/episodes/{slug}:
+ *   get:
+ *     summary: Retrieves a specific Simpsons episode by slug
+ *     tags: [Episodes]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The slug of the episode
+ *     responses:
+ *       200:
+ *         description: Episode details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 episode:
+ *                   allOf:
+ *                     - $ref: '#/components/schemas/Episode'
+ *                     - type: object
+ *                       properties:
+ *                         characters:
+ *                           type: array
+ *                           items:
+ *                             type: string
+ *                         director:
+ *                           type: string
+ *                         writer:
+ *                           type: string
+ *                         funFacts:
+ *                           type: array
+ *                           items:
+ *                             type: string
+ *       404:
+ *         description: Episode not found
+ *       500:
+ *         description: Server error
+ */
+
+/**
  * Retrieves a Simpsons episode based on the provided slug.
  *
  * @param {Object} req - The request object.

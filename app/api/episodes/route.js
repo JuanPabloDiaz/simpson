@@ -1,4 +1,26 @@
 /**
+ * @swagger
+ * /api/episodes:
+ *   get:
+ *     summary: Retrieves a list of all Simpsons episodes
+ *     tags: [Episodes]
+ *     responses:
+ *       200:
+ *         description: A list of episodes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 episodes:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Episode'
+ *       500:
+ *         description: Server error
+ */
+
+/**
  * Retrieves a list of episodes from the episodes.json file.
  * @returns {Promise<Object>} A promise that resolves to an object containing The Simpsons episodes data.
  */

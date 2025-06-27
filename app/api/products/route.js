@@ -1,4 +1,26 @@
 /**
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Retrieves a list of all Simpsons products
+ *     tags: [Products]
+ *     responses:
+ *       200:
+ *         description: A list of products
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 products:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Product'
+ *       500:
+ *         description: Server error
+ */
+
+/**
  * Retrieves a list of products from the products.json file.
  * @returns {Promise<Object>} A promise that resolves to an object containing The Simpsons products data.
  */

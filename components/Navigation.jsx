@@ -15,6 +15,22 @@ export const Navigation = () => {
         <Link href="/">
           <Image src="/logo.png" alt="The Simpsons" width={70} height={50} />
         </Link>
+
+        <Link href="/characters">
+          Characters
+        </Link>
+
+        <Link href="/episodes">
+          Episodes
+        </Link>
+
+        <Link href="/products">
+          Products
+        </Link>
+
+        <Link href="/api-docs">
+          API Docs
+        </Link>
       </Container>
     </div>
   )
