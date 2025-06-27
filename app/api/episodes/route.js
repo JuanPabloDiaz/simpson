@@ -1,0 +1,35 @@
+/**
+ * Retrieves a list of episodes from the episodes.json file.
+ * @returns {Promise<Object>} A promise that resolves to an object containing The Simpsons episodes data.
+ */
+
+import episodes from '@/data/episodes.json'
+import { NextResponse } from 'next/server'
+
+export async function GET() {
+  // Transform Simpsons episodes data to match the expected format
+  const transformedEpisodes = episodes.map(episode => {
+    // Create a slug from the episode name
+    const slug = episode.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
+    
+    return {
+      id: episode.id,
+      name: episode.name,
+      slug: slug,
+      season: episode.season,
+      episode: episode.episode,
+      description: episode.description,
+      rating: episode.rating,
+      airDate: episode.airDate,
+      thumbnailUrl: episode.thumbnailUrl
+    }
+  })
+
+  // Add cache control headers to prevent caching
+  const response = NextResponse.json({ episodes: transformedEpisodes })
+  response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
+  response.headers.set('Pragma', 'no-cache')
+  response.headers.set('Expires', '0')
+  
+  return response
+}

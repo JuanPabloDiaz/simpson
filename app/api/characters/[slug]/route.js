@@ -35,10 +35,9 @@ export async function GET(req, { params }) {
     const image1 = `https://via.placeholder.com/400x300/${backgroundColor}/FFFFFF?text=${encodeURIComponent(character.name)}+Scene+1`
     const image2 = `https://via.placeholder.com/400x300/${(parseInt(backgroundColor, 16) + 1000).toString(16)}/FFFFFF?text=${encodeURIComponent(character.name)}+Scene+2`
     
-    // Create a more detailed character object with additional fields
+    // Create a more detailed character object with all original data plus additional fields
     const enhancedCharacter = {
-      id: character.id,
-      name: character.name,
+      ...character, // Include all original character data
       slug: slug,
       description: `${character.name} is a character from The Simpsons.`,
       gender: character.gender || 'unknown',

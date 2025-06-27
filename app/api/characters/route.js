@@ -8,6 +8,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   // Transform Simpsons character data to match the expected format
+  // Pass all data from characters.json while adding additional useful fields
   const transformedCharacters = characters.map(character => {
     // Create a slug from the normalized name
     const slug = character.normalized_name.toLowerCase().replace(/\s+/g, '-')
@@ -17,9 +18,9 @@ export async function GET() {
     const backgroundColor = Math.floor(Math.random() * 16777215).toString(16) // Random color
     const avatarUrl = `https://via.placeholder.com/200x200/${backgroundColor}/FFFFFF?text=${encodeURIComponent(character.name)}`
     
+    // Return all original data plus additional fields
     return {
-      id: character.id,
-      name: character.name,
+      ...character, // Include all original character data
       slug: slug,
       avatar: avatarUrl,
       description: `${character.name} is a character from The Simpsons.`,
