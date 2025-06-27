@@ -67,9 +67,11 @@ export default function TestPage() {
           <div key={character.id} className="border rounded-md p-2">
             <h2 className="font-semibold mb-2">{character.name}</h2>
             <div className="overflow-hidden rounded-md mb-2">
-              <img 
+              <Image 
                 src={character.avatar} 
                 alt={character.name} 
+                width={200}
+                height={200}
                 className="w-full h-auto"
               />
             </div>

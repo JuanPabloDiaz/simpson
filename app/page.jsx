@@ -6,6 +6,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function HomePage() {
   const [characters, setCharacters] = useState([])
@@ -79,9 +80,11 @@ export default function HomePage() {
               {character.name}
             </div>
             <div className="p-2">
-              <img 
+              <Image 
                 src={character.avatar} 
                 alt={character.name} 
+                width={150}
+                height={150}
                 className="w-full h-auto rounded"
                 onError={(e) => {
                   e.target.onerror = null
