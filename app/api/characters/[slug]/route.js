@@ -8,14 +8,14 @@
  * @returns {Promise<Object>} A promise that resolves to an object containing the character and their quotes, or an error response.
  */
 
-import simpsonsCharacters from '@/data/simpsons-characters.json'
-import simpsonsEpisodes from '@/data/simpsons-episodes.json'
+import characters from '@/data/characters.json'
+import episodes from '@/data/episodes.json'
 import { NextResponse } from 'next/server'
 
 export async function GET(req, { params }) {
   try {
     // Find the character by normalized name converted to slug format
-    const character = simpsonsCharacters.find(
+    const character = characters.find(
       item => item.normalized_name.toLowerCase().replace(/\s+/g, '-') === params.slug
     )
     

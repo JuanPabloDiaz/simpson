@@ -1,14 +1,14 @@
 /**
- * Retrieves a list of characters from the simpsons-characters.json file.
+ * Retrieves a list of characters from the characters.json file.
  * @returns {Promise<Object>} A promise that resolves to an object containing the Simpsons characters data.
  */
 
-import simpsonsCharacters from '@/data/simpsons-characters.json'
+import characters from '@/data/characters.json'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   // Transform Simpsons character data to match the expected format
-  const transformedCharacters = simpsonsCharacters.map(character => {
+  const transformedCharacters = characters.map(character => {
     // Create a slug from the normalized name
     const slug = character.normalized_name.toLowerCase().replace(/\s+/g, '-')
     
