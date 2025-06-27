@@ -8,7 +8,7 @@ Renders a navigation component with a sticky header, containing a logo.
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Container } from '.';
+import { Container } from './Container';
 import Image from 'next/image';
 import { FaUsers, FaTv, FaShoppingCart, FaBook } from 'react-icons/fa';
 

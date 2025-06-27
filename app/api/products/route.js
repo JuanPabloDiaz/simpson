@@ -39,10 +39,8 @@ export async function GET() {
     // Create a slug from the product name
     const slug = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
     
-    // Generate a placeholder image URL with the product name
-    // Using placeholder.com for simple colored placeholders with text
-    const backgroundColor = Math.floor(Math.random() * 16777215).toString(16) // Random color
-    const imageUrl = `https://via.placeholder.com/200x200/${backgroundColor}/FFFFFF?text=${encodeURIComponent(product.name)}`
+    // Use the image URL from the data or generate a placeholder if not available
+    const imageUrl = product.image || `https://via.placeholder.com/200x200/466dc0/FFFFFF?text=${encodeURIComponent(product.name)}`
     
     return {
       id: product.id,

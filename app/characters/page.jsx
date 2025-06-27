@@ -98,21 +98,6 @@ export default function CharactersPage() {
                 {character.name}
               </div>
               <div className="p-4 text-center">
-                <div className="bg-gray-100 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                  {character.avatar && (
-                    <Image 
-                      src={character.avatar} 
-                      alt={character.name} 
-                      width={96} 
-                      height={96}
-                      className="object-cover"
-                      onError={(e) => {
-                        e.target.onerror = null
-                        e.target.src = 'https://via.placeholder.com/96?text=?'
-                      }}
-                    />
-                  )}
-                </div>
                 <p className="text-sm text-gray-600 mb-2">
                   {character.normalized_name || 'Springfield Resident'}
                 </p>

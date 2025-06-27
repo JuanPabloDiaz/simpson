@@ -9,7 +9,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function CharacterDetailPage({ params }) {
   const [character, setCharacter] = useState(null)
@@ -117,23 +116,8 @@ export default function CharacterDetailPage({ params }) {
         </div>
 
         <div className="p-4">
-          {/* Character image and basic info */}
+          {/* Character basic info */}
           <div className="flex flex-col md:flex-row gap-6">
-            <div className="w-full md:w-1/3">
-              <Image
-                src={character.avatar}
-                alt={character.name}
-                width={300}
-                height={300}
-                className="w-full h-auto rounded-lg shadow-md"
-                onError={e => {
-                  e.target.onerror = null
-                  e.target.src =
-                    'https://via.placeholder.com/300x300?text=Character'
-                }}
-              />
-            </div>
-
             <div className="w-full md:w-2/3">
               <h2 className="text-xl font-semibold mb-2">About</h2>
               <p className="mb-4">{character.description}</p>
@@ -178,34 +162,6 @@ export default function CharacterDetailPage({ params }) {
               )}
             </div>
           </div>
-
-          {/* Character images */}
-          {character.images && character.images.length > 0 && (
-            <div className="mt-6">
-              <h2 className="text-xl font-semibold mb-2">Images</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {character.images.map((image, index) => (
-                  <div
-                    key={index}
-                    className="rounded-lg overflow-hidden shadow-md"
-                  >
-                    <Image
-                      src={image}
-                      alt={`${character.name} ${index + 1}`}
-                      width={400}
-                      height={300}
-                      className="w-full h-auto"
-                      onError={e => {
-                        e.target.onerror = null
-                        e.target.src =
-                          'https://via.placeholder.com/400x300?text=Image+Not+Found'
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Character quotes */}
           {quotes && quotes.length > 0 && (

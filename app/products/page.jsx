@@ -98,20 +98,14 @@ export default function ProductsPage() {
                 <h2 className="text-lg text-blue-900 truncate">{product.name}</h2>
               </div>
               
-              {product.image && (
-                <div className="relative h-48 w-full">
-                  <Image 
-                    src={product.image} 
-                    alt={product.name} 
-                    fill
-                    className="object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null
-                      e.target.src = 'https://via.placeholder.com/400x200?text=Product'
-                    }}
-                  />
-                </div>
-              )}
+              <div className="relative h-48 w-full">
+                <Image 
+                  src={product.image || '/homer-toy.jpg'} 
+                  alt={product.name} 
+                  fill
+                  className="object-contain"
+                />
+              </div>
               
               <div className="p-4">
                 <p className="text-sm text-gray-700 mb-4 line-clamp-2">

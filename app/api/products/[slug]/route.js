@@ -80,14 +80,13 @@ export async function GET(req, { params }) {
     // Create a slug from the product name
     const slug = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
     
-    // Generate placeholder image URLs with the product name
-    // Using placeholder.com for simple colored placeholders with text
-    const backgroundColor = Math.floor(Math.random() * 16777215).toString(16) // Random color
-    const imageUrl = `https://via.placeholder.com/200x200/${backgroundColor}/FFFFFF?text=${encodeURIComponent(product.name)}`
+    // Use the image URL from the data or generate a placeholder if not available
+    const imageUrl = product.image || `https://via.placeholder.com/200x200/466dc0/FFFFFF?text=${encodeURIComponent(product.name)}`
     
-    // Create different placeholder images for the detail view
-    const image1 = `https://via.placeholder.com/400x300/${backgroundColor}/FFFFFF?text=${encodeURIComponent(product.name)}+View+1`
-    const image2 = `https://via.placeholder.com/400x300/${(parseInt(backgroundColor, 16) + 1000).toString(16)}/FFFFFF?text=${encodeURIComponent(product.name)}+View+2`
+    // Create different placeholder images for the detail view based on the main image
+    const colorCode = imageUrl.match(/\/([0-9a-f]{6})\//) ? imageUrl.match(/\/([0-9a-f]{6})\//)[1] : '466dc0'
+    const image1 = product.image || `https://via.placeholder.com/400x300/${colorCode}/FFFFFF?text=${encodeURIComponent(product.name)}+View+1`
+    const image2 = product.image || `https://via.placeholder.com/400x300/${colorCode}/FFFFFF?text=${encodeURIComponent(product.name)}+View+2`
     
     // Create a more detailed product object with additional fields
     const enhancedProduct = {

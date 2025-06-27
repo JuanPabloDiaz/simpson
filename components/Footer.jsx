@@ -30,7 +30,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-yellow-400 font-bold text-lg">The Full Stack Simpsons</p>
-            <p className="text-sm text-gray-300">© {currentYear} Juan Pablo Diaz</p>
+            <p className="text-sm text-gray-300">© {currentYear} Juan Diaz</p>
           </div>
           
           <div className="flex space-x-6">
