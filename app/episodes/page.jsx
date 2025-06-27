@@ -77,7 +77,7 @@ export default function EpisodesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
+    <main className="min-h-screen py-10">
       <Container>
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4">

@@ -41,7 +41,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
+    <div className="py-10 w-full">
       <Container>
         <div className="text-center mb-12">
           <div className="flex justify-center mb-4">

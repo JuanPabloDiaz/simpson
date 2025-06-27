@@ -41,7 +41,7 @@ export default function CharactersPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
+      <main className="min-h-screen py-10">
         <Container>
           <div className="text-center py-20">
             <div className="inline-block animate-bounce bg-white p-6 rounded-full shadow-lg mb-4">
