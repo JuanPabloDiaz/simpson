@@ -1,4 +1,4 @@
-# The Simpsons API
+# The Full Stack Simpsons Project
 
 ![The Simpsons Logo](/public/logo.png)
 

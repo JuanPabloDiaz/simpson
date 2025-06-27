@@ -41,7 +41,7 @@ export default function ProductsPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-green-300 to-green-500 py-10">
+      <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
         <Container>
           <div className="text-center py-20">
             <div className="inline-block animate-bounce bg-white p-6 rounded-full shadow-lg mb-4">
@@ -56,7 +56,7 @@ export default function ProductsPage() {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-green-300 to-green-500 py-10">
+      <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
@@ -77,7 +77,7 @@ export default function ProductsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-green-300 to-green-500 py-10">
+    <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
       <Container>
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4">

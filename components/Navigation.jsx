@@ -10,15 +10,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Container } from '.';
 import Image from 'next/image';
+import { FaUsers, FaTv, FaShoppingCart, FaBook } from 'react-icons/fa';
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const navItems = [
-    { name: 'Characters', href: '/characters', icon: 'mdi:account-group' },
-    { name: 'Episodes', href: '/episodes', icon: 'mdi:television-classic' },
-    { name: 'Products', href: '/products', icon: 'mdi:cart' },
-    { name: 'API Docs', href: '/api-docs', icon: 'mdi:book-open-page-variant' }
+    { name: 'Characters', href: '/characters', icon: <FaUsers size={20} /> },
+    { name: 'Episodes', href: '/episodes', icon: <FaTv size={20} /> },
+    { name: 'Products', href: '/products', icon: <FaShoppingCart size={20} /> },
+    { name: 'API Docs', href: '/api-docs', icon: <FaBook size={20} /> }
   ];
 
   return (
@@ -32,9 +33,7 @@ export const Navigation = () => {
               width={60} 
               height={40} 
               className="mr-2"
-            />
-            <span className="text-yellow-400 font-bold text-xl hidden sm:block">Springfield</span>
-          </div>
+            />          </div>
         </Link>
 
         {/* Mobile menu button */}
@@ -61,7 +60,9 @@ export const Navigation = () => {
               href={item.href}
               className="text-white hover:text-yellow-400 px-3 py-2 rounded-md font-medium transition-colors flex items-center"
             >
-              <iconify-icon icon={item.icon} className="mr-1" width="20" height="20"></iconify-icon>
+              <span className="mr-1">
+                {item.icon}
+              </span>
               {item.name}
             </Link>
           ))}
@@ -79,7 +80,9 @@ export const Navigation = () => {
                 className="text-white hover:bg-blue-700 hover:text-yellow-400 block px-3 py-2 rounded-md text-base font-medium flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <iconify-icon icon={item.icon} className="mr-3" width="24" height="24"></iconify-icon>
+                <span className="mr-3">
+                  {item.icon}
+                </span>
                 {item.name}
               </Link>
             ))}

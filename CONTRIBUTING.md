@@ -1,6 +1,6 @@
-# Contributing to The Simpsons API
+# Contributing to The Full Stack Simpsons 
 
-Thank you for your interest in contributing to The Simpsons API! We appreciate your help in making this project better.
+Thank you for your interest in contributing to The Full Stack Simpsons! We appreciate your help in making this project better.
 
 ## Code of Conduct
 

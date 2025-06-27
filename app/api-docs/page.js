@@ -28,7 +28,7 @@ export default function ApiDocs() {
 
   if (error) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-purple-300 to-purple-500 py-10">
+      <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
@@ -49,7 +49,7 @@ export default function ApiDocs() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-purple-300 to-purple-500 py-10">
+    <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
       <Container>
         <div className="bg-white rounded-lg shadow-xl p-6 mb-8">
           <div className="text-center mb-8">
