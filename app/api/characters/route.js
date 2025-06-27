@@ -1,4 +1,26 @@
 /**
+ * @swagger
+ * /api/characters:
+ *   get:
+ *     summary: Retrieves a list of all Simpsons characters
+ *     tags: [Characters]
+ *     responses:
+ *       200:
+ *         description: A list of characters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 characters:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Character'
+ *       500:
+ *         description: Server error
+ */
+
+/**
  * Retrieves a list of characters from the characters.json file.
  * @returns {Promise<Object>} A promise that resolves to an object containing the Simpsons characters data.
  */
