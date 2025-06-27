@@ -11,15 +11,14 @@ import Link from 'next/link';
 import { Container } from '.';
 import Image from 'next/image';
 
-
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const navItems = [
-    { name: 'Characters', href: '/characters', icon: '👪' },
-    { name: 'Episodes', href: '/episodes', icon: '📺' },
-    { name: 'Products', href: '/products', icon: '🛒' },
-    { name: 'API Docs', href: '/api-docs', icon: bookIcon }
+    { name: 'Characters', href: '/characters', icon: 'mdi:account-group' },
+    { name: 'Episodes', href: '/episodes', icon: 'mdi:television-classic' },
+    { name: 'Products', href: '/products', icon: 'mdi:cart' },
+    { name: 'API Docs', href: '/api-docs', icon: 'mdi:book-open-page-variant' }
   ];
 
   return (
@@ -62,7 +61,7 @@ export const Navigation = () => {
               href={item.href}
               className="text-white hover:text-yellow-400 px-3 py-2 rounded-md font-medium transition-colors flex items-center"
             >
-              <span className="mr-1">{item.icon}</span>
+              <iconify-icon icon={item.icon} className="mr-1" width="20" height="20"></iconify-icon>
               {item.name}
             </Link>
           ))}
@@ -80,7 +79,7 @@ export const Navigation = () => {
                 className="text-white hover:bg-blue-700 hover:text-yellow-400 block px-3 py-2 rounded-md text-base font-medium flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="mr-3 text-xl">{item.icon}</span>
+                <iconify-icon icon={item.icon} className="mr-3" width="24" height="24"></iconify-icon>
                 {item.name}
               </Link>
             ))}

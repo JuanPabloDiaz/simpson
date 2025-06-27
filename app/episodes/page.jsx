@@ -45,7 +45,7 @@ export default function EpisodesPage() {
         <Container>
           <div className="text-center py-20">
             <div className="inline-block animate-bounce bg-white p-6 rounded-full shadow-lg mb-4">
-              <div className="text-5xl">🔄</div>
+              <iconify-icon icon="mdi:loading" width="48" height="48"></iconify-icon>
             </div>
             <h1 className="text-3xl font-bold text-blue-900">Loading Simpsons Episodes...</h1>
           </div>
@@ -60,9 +60,9 @@ export default function EpisodesPage() {
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
-              <div className="text-5xl">⚠️</div>
+              <iconify-icon icon="mdi:alert-circle" width="48" height="48" style={{color: 'white'}}></iconify-icon>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900 mb-4">D'oh! Something went wrong</h1>
+            <h1 className="text-3xl font-bold text-blue-900 mb-4">D&apos;oh! Something went wrong</h1>
             <p className="text-xl text-red-600 mb-6">{error}</p>
             <button 
               onClick={() => window.location.reload()} 

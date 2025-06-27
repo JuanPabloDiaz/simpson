@@ -15,28 +15,28 @@ export default function HomePage() {
       description: 'Meet your favorite Springfield residents',
       link: '/characters',
       color: 'bg-yellow-400',
-      icon: '👪'
+      icon: 'mdi:account-group'
     },
     {
       title: 'Episodes',
       description: 'Browse all episodes from the series',
       link: '/episodes',
       color: 'bg-blue-400',
-      icon: '📺'
+      icon: 'mdi:television-classic'
     },
     {
       title: 'Products',
       description: 'Shop Simpsons merchandise',
       link: '/products',
       color: 'bg-green-400',
-      icon: '🛒'
+      icon: 'mdi:cart'
     },
     {
       title: 'API Docs',
       description: 'Developer documentation',
       link: '/api-docs',
       color: 'bg-purple-400',
-      icon: '📚'
+      icon: 'mdi:book-open-page-variant'
     }
   ];
 
@@ -62,7 +62,9 @@ export default function HomePage() {
               key={section.title}
               className={`${section.color} rounded-lg p-6 shadow-lg transform transition-transform hover:scale-105 flex items-center border-4 border-white`}
             >
-              <div className="text-5xl mr-4">{section.icon}</div>
+              <div className="mr-4">
+                <iconify-icon icon={section.icon} width="48" height="48"></iconify-icon>
+              </div>
               <div>
                 <h2 className="text-2xl font-bold text-blue-900">{section.title}</h2>
                 <p className="text-blue-800">{section.description}</p>

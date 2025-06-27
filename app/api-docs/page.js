@@ -32,9 +32,9 @@ export default function ApiDocs() {
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
-              <div className="text-5xl">⚠️</div>
+              <iconify-icon icon="mdi:alert-circle" width="48" height="48" style={{color: 'white'}}></iconify-icon>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900 mb-4">D'oh! Something went wrong</h1>
+            <h1 className="text-3xl font-bold text-blue-900 mb-4">D&apos;oh! Something went wrong</h1>
             <p className="text-xl text-red-600 mb-6">{error}</p>
             <button 
               onClick={() => window.location.reload()} 
@@ -64,11 +64,13 @@ export default function ApiDocs() {
           
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
             <div className="flex">
-              <div className="flex-shrink-0 text-2xl">💡</div>
+              <div className="flex-shrink-0">
+                <iconify-icon icon="mdi:lightbulb" width="24" height="24" style={{color: '#b45309'}}></iconify-icon>
+              </div>
               <div className="ml-3">
                 <p className="text-sm text-yellow-700">
                   This interactive documentation allows you to try out API calls directly from this page.
-                  Click on any endpoint, then click the "Try it out" button to make a real API request.
+                  Click on any endpoint, then click the &quot;Try it out&quot; button to make a real API request.
                 </p>
               </div>
             </div>
@@ -81,7 +83,9 @@ export default function ApiDocs() {
           ) : (
             <div className="flex justify-center items-center py-20">
               <div className="text-center">
-                <div className="inline-block animate-spin text-5xl mb-4">🔄</div>
+                <div className="inline-block mb-4">
+                  <iconify-icon icon="mdi:loading" width="48" height="48" class="animate-spin"></iconify-icon>
+                </div>
                 <p className="text-xl text-blue-800">Loading API documentation...</p>
               </div>
             </div>
