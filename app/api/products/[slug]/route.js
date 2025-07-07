@@ -70,24 +70,39 @@ export async function GET(req, { params }) {
   try {
     // Find the product by slug
     const product = products.find(
-      item => item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') === params.slug
+      item =>
+        item.name
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w-]/g, '') === params.slug,
     )
-    
+
     if (!product) {
       return new NextResponse('not found', { status: 404 })
     }
 
     // Create a slug from the product name
-    const slug = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
-    
+    const slug = product.name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')
+
     // Use the image URL from the data or generate a placeholder if not available
-    const imageUrl = product.image || `https://via.placeholder.com/200x200/466dc0/FFFFFF?text=${encodeURIComponent(product.name)}`
-    
+    const imageUrl =
+      product.image ||
+      `https://via.placeholder.com/200x200/466dc0/FFFFFF?text=${encodeURIComponent(product.name)}`
+
     // Create different placeholder images for the detail view based on the main image
-    const colorCode = imageUrl.match(/\/([0-9a-f]{6})\//) ? imageUrl.match(/\/([0-9a-f]{6})\//)[1] : '466dc0'
-    const image1 = product.image || `https://via.placeholder.com/400x300/${colorCode}/FFFFFF?text=${encodeURIComponent(product.name)}+View+1`
-    const image2 = product.image || `https://via.placeholder.com/400x300/${colorCode}/FFFFFF?text=${encodeURIComponent(product.name)}+View+2`
-    
+    const colorCode = imageUrl.match(/\/([0-9a-f]{6})\//)
+      ? imageUrl.match(/\/([0-9a-f]{6})\//)[1]
+      : '466dc0'
+    const image1 =
+      product.image ||
+      `https://via.placeholder.com/400x300/${colorCode}/FFFFFF?text=${encodeURIComponent(product.name)}+View+1`
+    const image2 =
+      product.image ||
+      `https://via.placeholder.com/400x300/${colorCode}/FFFFFF?text=${encodeURIComponent(product.name)}+View+2`
+
     // Create a more detailed product object with additional fields
     const enhancedProduct = {
       id: product.id,
@@ -102,20 +117,25 @@ export async function GET(req, { params }) {
       inStock: Math.random() > 0.3, // 70% chance of being in stock
       rating: (Math.random() * 2 + 3).toFixed(1), // Random rating between 3.0 and 5.0
       relatedProducts: [
-        "Lisa Lionheart",
+        'Lisa Lionheart',
         "Krusty's Kreepy Konjuring Kit",
-        "Lakeside Boggle"
-      ].filter(name => name !== product.name).slice(0, 2) // 2 related products excluding current product
+        'Lakeside Boggle',
+      ]
+        .filter(name => name !== product.name)
+        .slice(0, 2), // 2 related products excluding current product
     }
 
     // Add cache control headers to prevent caching
     const response = NextResponse.json({
-      product: enhancedProduct
+      product: enhancedProduct,
     })
-    response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
+    response.headers.set(
+      'Cache-Control',
+      'no-store, max-age=0, must-revalidate',
+    )
     response.headers.set('Pragma', 'no-cache')
     response.headers.set('Expires', '0')
-    
+
     // Add CORS headers
     return setCorsHeaders(response)
   } catch (error) {

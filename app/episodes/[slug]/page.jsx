@@ -9,7 +9,7 @@ import { Container } from '@/components'
 export default function EpisodeDetailPage() {
   const params = useParams()
   const { slug } = params
-  
+
   const [episode, setEpisode] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -22,8 +22,8 @@ export default function EpisodeDetailPage() {
           cache: 'no-store',
           headers: {
             'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-          }
+            Pragma: 'no-cache',
+          },
         })
 
         if (!response.ok) {
@@ -53,7 +53,9 @@ export default function EpisodeDetailPage() {
             <div className="inline-block animate-bounce bg-white p-6 rounded-full shadow-lg mb-4">
               <div className="w-12 h-12 border-4 border-blue-900 border-t-transparent rounded-full animate-spin"></div>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900">Loading Episode Details...</h1>
+            <h1 className="text-3xl font-bold text-blue-900">
+              Loading Episode Details...
+            </h1>
           </div>
         </Container>
       </main>
@@ -66,19 +68,23 @@ export default function EpisodeDetailPage() {
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
-              <div className="w-12 h-12 text-white flex items-center justify-center">❌</div>
+              <div className="w-12 h-12 text-white flex items-center justify-center">
+                ❌
+              </div>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900 mb-4">D&apos;oh! Something went wrong</h1>
+            <h1 className="text-3xl font-bold text-blue-900 mb-4">
+              D&apos;oh! Something went wrong
+            </h1>
             <p className="text-xl text-red-600 mb-6">{error}</p>
             <div className="flex justify-center gap-4">
-              <button 
-                onClick={() => window.location.reload()} 
+              <button
+                onClick={() => window.location.reload()}
                 className="bg-blue-900 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-blue-800 transition-colors"
               >
                 Try Again
               </button>
-              <Link 
-                href="/episodes" 
+              <Link
+                href="/episodes"
                 className="bg-yellow-600 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-yellow-700 transition-colors"
               >
                 Back to Episodes
@@ -96,12 +102,18 @@ export default function EpisodeDetailPage() {
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
-              <div className="w-12 h-12 text-white flex items-center justify-center">❓</div>
+              <div className="w-12 h-12 text-white flex items-center justify-center">
+                ❓
+              </div>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900 mb-4">Episode Not Found</h1>
-            <p className="text-xl text-blue-800 mb-6">We couldn&apos;t find the episode you&apos;re looking for.</p>
-            <Link 
-              href="/episodes" 
+            <h1 className="text-3xl font-bold text-blue-900 mb-4">
+              Episode Not Found
+            </h1>
+            <p className="text-xl text-blue-800 mb-6">
+              We couldn&apos;t find the episode you&apos;re looking for.
+            </p>
+            <Link
+              href="/episodes"
               className="bg-blue-900 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-blue-800 transition-colors"
             >
               Back to Episodes
@@ -116,8 +128,8 @@ export default function EpisodeDetailPage() {
     <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 py-10">
       <Container>
         <div className="mb-6">
-          <Link 
-            href="/episodes" 
+          <Link
+            href="/episodes"
             className="inline-flex items-center text-blue-900 hover:text-blue-700 transition-colors font-bold"
           >
             ← Back to Episodes
@@ -137,14 +149,19 @@ export default function EpisodeDetailPage() {
 
           {/* Episode Image */}
           <div className="relative h-64 md:h-96 w-full">
-            <Image 
-              src={episode.fullSizeImageUrl || episode.thumbnailUrl || 'https://via.placeholder.com/800x400?text=Episode+Image'} 
-              alt={episode.name} 
+            <Image
+              src={
+                episode.fullSizeImageUrl ||
+                episode.thumbnailUrl ||
+                'https://via.placeholder.com/800x400?text=Episode+Image'
+              }
+              alt={episode.name}
               fill
               className="object-cover"
-              onError={(e) => {
+              onError={e => {
                 e.target.onerror = null
-                e.target.src = 'https://via.placeholder.com/800x400?text=Episode+Image'
+                e.target.src =
+                  'https://via.placeholder.com/800x400?text=Episode+Image'
               }}
             />
           </div>
@@ -152,28 +169,36 @@ export default function EpisodeDetailPage() {
           {/* Episode Details */}
           <div className="p-6">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-blue-900 mb-2">Description</h2>
-              <p className="text-gray-700">{episode.description || 'No description available'}</p>
+              <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                Description
+              </h2>
+              <p className="text-gray-700">
+                {episode.description || 'No description available'}
+              </p>
             </div>
 
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-blue-900 mb-2">Air Date</h2>
+              <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                Air Date
+              </h2>
               <p className="text-gray-700">
                 {new Date(episode.airDate).toLocaleDateString('en-US', {
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric'
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
                 })}
               </p>
             </div>
 
             {episode.characters && episode.characters.length > 0 && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-blue-900 mb-2">Featured Characters</h2>
+                <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                  Featured Characters
+                </h2>
                 <div className="flex flex-wrap gap-2">
                   {episode.characters.map((character, index) => (
-                    <span 
-                      key={index} 
+                    <span
+                      key={index}
                       className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
                     >
                       {character}
@@ -185,24 +210,32 @@ export default function EpisodeDetailPage() {
 
             {episode.director && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-blue-900 mb-2">Director</h2>
+                <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                  Director
+                </h2>
                 <p className="text-gray-700">{episode.director}</p>
               </div>
             )}
 
             {episode.writer && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-blue-900 mb-2">Writer</h2>
+                <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                  Writer
+                </h2>
                 <p className="text-gray-700">{episode.writer}</p>
               </div>
             )}
 
             {episode.funFacts && episode.funFacts.length > 0 && (
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-blue-900 mb-2">Fun Facts</h2>
+                <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                  Fun Facts
+                </h2>
                 <ul className="list-disc pl-5 text-gray-700">
                   {episode.funFacts.map((fact, index) => (
-                    <li key={index} className="mb-1">{fact}</li>
+                    <li key={index} className="mb-1">
+                      {fact}
+                    </li>
                   ))}
                 </ul>
               </div>

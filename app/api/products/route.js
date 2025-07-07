@@ -37,18 +37,23 @@ export async function GET() {
   // Transform Simpsons products data to match the expected format
   const transformedProducts = products.map(product => {
     // Create a slug from the product name
-    const slug = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
-    
+    const slug = product.name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')
+
     // Use the image URL from the data or generate a placeholder if not available
-    const imageUrl = product.image || `https://via.placeholder.com/200x200/466dc0/FFFFFF?text=${encodeURIComponent(product.name)}`
-    
+    const imageUrl =
+      product.image ||
+      `https://via.placeholder.com/200x200/466dc0/FFFFFF?text=${encodeURIComponent(product.name)}`
+
     return {
       id: product.id,
       name: product.name,
       slug: slug,
       category: product.category,
       description: product.description,
-      image: imageUrl
+      image: imageUrl,
     }
   })
 
@@ -57,7 +62,7 @@ export async function GET() {
   response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
   response.headers.set('Pragma', 'no-cache')
   response.headers.set('Expires', '0')
-  
+
   // Add CORS headers
   return setCorsHeaders(response)
 }

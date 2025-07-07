@@ -1,6 +1,7 @@
-# Contributing to The Full Stack Simpsons 
+# Contributing to The Full Stack Simpsons
 
-Thank you for your interest in contributing to The Full Stack Simpsons! We appreciate your help in making this project better.
+Thank you for your interest in contributing to The Full Stack Simpsons! We
+appreciate your help in making this project better.
 
 ## Code of Conduct
 
@@ -55,17 +56,20 @@ We welcome feature suggestions! Please create an issue with:
 ## Development Setup
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/simpson.git
 cd simpson
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 3. Run the development server
+
 ```bash
 npm run dev
 ```
@@ -110,6 +114,7 @@ npm run dev
 
 ## License
 
-By contributing to this project, you agree that your contributions will be licensed under the project's [MIT License](LICENSE).
+By contributing to this project, you agree that your contributions will be
+licensed under the project's [MIT License](LICENSE).
 
 Thank you for contributing to The Simpsons API!

@@ -19,7 +19,7 @@ export const dynamicParams = true
 
 export default async function Page({ params }) {
   const { character, character_quotes } = await getCharacterBySlug(params.slug)
-  
+
   // Add timestamp for cache busting
   const timestamp = Date.now()
   console.log('Rendering character detail page for:', character?.name)
@@ -29,36 +29,38 @@ export default async function Page({ params }) {
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold capitalize">{character.name}</h1>
         <ul className="flex flex-wrap gap-1 text-sm">
-          {character.occupations && character.occupations.map(item => {
-            return (
-              <li
-                key={item}
-                className="p-2 text-gray-300 bg-gray-800 rounded-md"
-              >
-                {item}
-              </li>
-            )
-          })}
+          {character.occupations &&
+            character.occupations.map(item => {
+              return (
+                <li
+                  key={item}
+                  className="p-2 text-gray-300 bg-gray-800 rounded-md"
+                >
+                  {item}
+                </li>
+              )
+            })}
         </ul>
       </div>
       <p className="text-sm leading-6">{character.description}</p>
       <ul className="grid gap-2 sm:grid-cols-2">
-        {character.images && character.images.map(image => {
-          return (
-            <li
-              key={image}
-              className="relative flex overflow-hidden bg-gray-900 rounded-xl"
-            >
-              <Image
-                className="transition-all duration-500 hover:scale-110 hover:rotate-2"
-                src={`${image}?t=${timestamp}`}
-                alt={character.name || ''}
-                width={760}
-                height={435}
-              />
-            </li>
-          )
-        })}
+        {character.images &&
+          character.images.map(image => {
+            return (
+              <li
+                key={image}
+                className="relative flex overflow-hidden bg-gray-900 rounded-xl"
+              >
+                <Image
+                  className="transition-all duration-500 hover:scale-110 hover:rotate-2"
+                  src={`${image}?t=${timestamp}`}
+                  alt={character.name || ''}
+                  width={760}
+                  height={435}
+                />
+              </li>
+            )
+          })}
       </ul>
       {character.skills && (
         <>

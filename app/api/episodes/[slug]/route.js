@@ -64,16 +64,23 @@ export async function GET(req, { params }) {
   try {
     // Find the episode by slug
     const episode = episodes.find(
-      item => item.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') === params.slug
+      item =>
+        item.name
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w-]/g, '') === params.slug,
     )
-    
+
     if (!episode) {
       return new NextResponse('not found', { status: 404 })
     }
 
     // Create a slug from the episode name
-    const slug = episode.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
-    
+    const slug = episode.name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')
+
     // Create a more detailed episode object with additional fields
     const enhancedEpisode = {
       id: episode.id,
@@ -87,50 +94,53 @@ export async function GET(req, { params }) {
       thumbnailUrl: episode.thumbnailUrl,
       fullSizeImageUrl: episode.thumbnailUrl, // Using the same image for now
       characters: [
-        "Homer Simpson", 
-        "Marge Simpson", 
-        "Bart Simpson", 
-        "Lisa Simpson", 
-        "Maggie Simpson"
+        'Homer Simpson',
+        'Marge Simpson',
+        'Bart Simpson',
+        'Lisa Simpson',
+        'Maggie Simpson',
       ],
-      director: "Various",
-      writer: "Various",
+      director: 'Various',
+      writer: 'Various',
       funFacts: [
         `This episode has a rating of ${episode.rating} out of 10.`,
-        `It originally aired on ${new Date(episode.airDate).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}.`,
-        "The Simpsons is the longest-running American animated television series."
-      ]
+        `It originally aired on ${new Date(episode.airDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.`,
+        'The Simpsons is the longest-running American animated television series.',
+      ],
     }
 
     // Add specific details for well-known episodes
-    if (episode.name === "Homer the Heretic") {
+    if (episode.name === 'Homer the Heretic') {
       enhancedEpisode.funFacts = [
-        "This episode won an Emmy Award for Outstanding Animated Program.",
+        'This episode won an Emmy Award for Outstanding Animated Program.',
         "It's considered one of the best episodes of the series.",
-        "The episode explores themes of religion and personal freedom."
+        'The episode explores themes of religion and personal freedom.',
       ]
-    } else if (episode.name === "Marge vs. the Monorail") {
+    } else if (episode.name === 'Marge vs. the Monorail') {
       enhancedEpisode.funFacts = [
         "This episode was written by Conan O'Brien.",
-        "It features a guest appearance by Leonard Nimoy.",
-        "It's frequently ranked as one of the best episodes of the series."
+        'It features a guest appearance by Leonard Nimoy.',
+        "It's frequently ranked as one of the best episodes of the series.",
       ]
-    } else if (episode.name === "Last Exit to Springfield") {
+    } else if (episode.name === 'Last Exit to Springfield') {
       enhancedEpisode.funFacts = [
-        "This episode contains numerous film parodies including The Godfather and Batman.",
+        'This episode contains numerous film parodies including The Godfather and Batman.',
         "The episode's title is a reference to the novel 'Last Exit to Brooklyn'.",
-        "It's considered by many critics to be the best episode of the series."
+        "It's considered by many critics to be the best episode of the series.",
       ]
     }
 
     // Add cache control headers to prevent caching
     const response = NextResponse.json({
-      episode: enhancedEpisode
+      episode: enhancedEpisode,
     })
-    response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
+    response.headers.set(
+      'Cache-Control',
+      'no-store, max-age=0, must-revalidate',
+    )
     response.headers.set('Pragma', 'no-cache')
     response.headers.set('Expires', '0')
-    
+
     // Add CORS headers
     return setCorsHeaders(response)
   } catch (error) {

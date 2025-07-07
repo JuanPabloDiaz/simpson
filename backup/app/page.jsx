@@ -16,7 +16,7 @@ export default async function Page() {
   // Force timestamp to prevent caching
   const timestamp = Date.now()
   const data = await getAllCharacters()
-  
+
   console.log('Rendering page with characters:', data?.characters?.length)
 
   return (

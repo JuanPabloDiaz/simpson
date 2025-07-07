@@ -57,25 +57,26 @@ export async function GET(req, { params }) {
   try {
     // Find the character by normalized name converted to slug format
     const character = characters.find(
-      item => item.normalized_name.toLowerCase().replace(/\s+/g, '-') === params.slug
+      item =>
+        item.normalized_name.toLowerCase().replace(/\s+/g, '-') === params.slug,
     )
-    
+
     if (!character) {
       return new NextResponse('not found', { status: 404 })
     }
 
     // Create a slug from the normalized name
     const slug = character.normalized_name.toLowerCase().replace(/\s+/g, '-')
-    
+
     // Generate placeholder image URLs with the character name
     // Using placeholder.com for simple colored placeholders with text
     const backgroundColor = Math.floor(Math.random() * 16777215).toString(16) // Random color
     const avatarUrl = `https://via.placeholder.com/200x200/${backgroundColor}/FFFFFF?text=${encodeURIComponent(character.name)}`
-    
+
     // Create different placeholder images for the detail view
     const image1 = `https://via.placeholder.com/400x300/${backgroundColor}/FFFFFF?text=${encodeURIComponent(character.name)}+Scene+1`
     const image2 = `https://via.placeholder.com/400x300/${(parseInt(backgroundColor, 16) + 1000).toString(16)}/FFFFFF?text=${encodeURIComponent(character.name)}+Scene+2`
-    
+
     // Create a more detailed character object with all original data plus additional fields
     const enhancedCharacter = {
       ...character, // Include all original character data
@@ -85,7 +86,7 @@ export async function GET(req, { params }) {
       avatar: avatarUrl,
       images: [image1, image2],
       skills: ['Humor', 'Resilience', 'Creativity'],
-      occupations: ['Springfield Resident']
+      occupations: ['Springfield Resident'],
     }
 
     // Generate some quotes based on the character's name
@@ -93,45 +94,76 @@ export async function GET(req, { params }) {
     const character_quotes = [
       { quote: `Hi, I'm ${character.name}!` },
       { quote: `Welcome to Springfield!` },
-      { quote: `That's just the way things are in Springfield.` }
+      { quote: `That's just the way things are in Springfield.` },
     ]
 
     // For main characters, add specific quotes
     if (character.normalized_name === 'Homer Simpson') {
       character_quotes[0].quote = "D'oh!"
-      character_quotes[1].quote = "Mmm... donuts."
-      character_quotes[2].quote = "Why you little...!"
-      enhancedCharacter.occupations = ['Safety Inspector at Springfield Nuclear Power Plant', 'Former Monorail Conductor']
-      enhancedCharacter.skills = ['Eating', 'Sleeping', 'Bowling', 'Nuclear Safety (debatable)']
+      character_quotes[1].quote = 'Mmm... donuts.'
+      character_quotes[2].quote = 'Why you little...!'
+      enhancedCharacter.occupations = [
+        'Safety Inspector at Springfield Nuclear Power Plant',
+        'Former Monorail Conductor',
+      ]
+      enhancedCharacter.skills = [
+        'Eating',
+        'Sleeping',
+        'Bowling',
+        'Nuclear Safety (debatable)',
+      ]
     } else if (character.normalized_name === 'Bart Simpson') {
-      character_quotes[0].quote = "Eat my shorts!"
+      character_quotes[0].quote = 'Eat my shorts!'
       character_quotes[1].quote = "Don't have a cow, man!"
       character_quotes[2].quote = "I didn't do it!"
-      enhancedCharacter.occupations = ['Student at Springfield Elementary', 'Prankster']
-      enhancedCharacter.skills = ['Skateboarding', 'Pranking', 'Slingshot Accuracy']
+      enhancedCharacter.occupations = [
+        'Student at Springfield Elementary',
+        'Prankster',
+      ]
+      enhancedCharacter.skills = [
+        'Skateboarding',
+        'Pranking',
+        'Slingshot Accuracy',
+      ]
     } else if (character.normalized_name === 'Lisa Simpson') {
       character_quotes[0].quote = "If anyone wants me, I'll be in my room."
       character_quotes[1].quote = "I'm going to become a vegetarian."
-      character_quotes[2].quote = "Trust in yourself and you can achieve anything."
-      enhancedCharacter.occupations = ['Student at Springfield Elementary', 'Activist']
-      enhancedCharacter.skills = ['Saxophone', 'Intelligence', 'Environmental Activism']
+      character_quotes[2].quote =
+        'Trust in yourself and you can achieve anything.'
+      enhancedCharacter.occupations = [
+        'Student at Springfield Elementary',
+        'Activist',
+      ]
+      enhancedCharacter.skills = [
+        'Saxophone',
+        'Intelligence',
+        'Environmental Activism',
+      ]
     } else if (character.normalized_name === 'Marge Simpson') {
-      character_quotes[0].quote = "Hmm..."
-      character_quotes[1].quote = "Homer!"
+      character_quotes[0].quote = 'Hmm...'
+      character_quotes[1].quote = 'Homer!'
       character_quotes[2].quote = "I don't think that's a very good idea."
       enhancedCharacter.occupations = ['Homemaker', 'Former Police Officer']
-      enhancedCharacter.skills = ['Cooking', 'Painting', 'Patience', 'Nurturing']
+      enhancedCharacter.skills = [
+        'Cooking',
+        'Painting',
+        'Patience',
+        'Nurturing',
+      ]
     }
 
     // Add cache control headers to prevent caching
     const response = NextResponse.json({
       character: enhancedCharacter,
-      character_quotes
+      character_quotes,
     })
-    response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
+    response.headers.set(
+      'Cache-Control',
+      'no-store, max-age=0, must-revalidate',
+    )
     response.headers.set('Pragma', 'no-cache')
     response.headers.set('Expires', '0')
-    
+
     // Add CORS headers
     return setCorsHeaders(response)
   } catch (error) {

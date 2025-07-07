@@ -18,8 +18,8 @@ export default function CharactersPage() {
           cache: 'no-store',
           headers: {
             'Cache-Control': 'no-cache',
-            'Pragma': 'no-cache'
-          }
+            Pragma: 'no-cache',
+          },
         })
 
         if (!response.ok) {
@@ -41,13 +41,23 @@ export default function CharactersPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen py-10">
+      <main className="min-h-screen bg-gradient-to-b from-yellow-300 to-yellow-500 flex items-center justify-center">
         <Container>
-          <div className="text-center py-20">
-            <div className="inline-block animate-bounce bg-white p-6 rounded-full shadow-lg mb-4">
-              <iconify-icon icon="mdi:loading" width="48" height="48"></iconify-icon>
+          <div className="text-center">
+            <div className="flex flex-col items-center justify-center space-y-6">
+              <div className="relative">
+                <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-blue-900 border-solid"></div>
+                <div className="absolute inset-0 rounded-full border-2 border-blue-900 opacity-30"></div>
+              </div>
+              <div className="space-y-2">
+                <h1 className="text-4xl md:text-5xl font-bold text-blue-900">
+                  Loading Simpsons Characters...
+                </h1>
+                <p className="text-xl text-blue-800 animate-pulse">
+                  Getting ready to meet Springfield's finest!
+                </p>
+              </div>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900">Loading Simpsons Characters...</h1>
           </div>
         </Container>
       </main>
@@ -60,12 +70,19 @@ export default function CharactersPage() {
         <Container>
           <div className="text-center py-20">
             <div className="inline-block bg-red-500 p-6 rounded-full shadow-lg mb-4">
-              <iconify-icon icon="mdi:alert-circle" width="48" height="48" style={{color: 'white'}}></iconify-icon>
+              <iconify-icon
+                icon="mdi:alert-circle"
+                width="48"
+                height="48"
+                style={{ color: 'white' }}
+              ></iconify-icon>
             </div>
-            <h1 className="text-3xl font-bold text-blue-900 mb-4">D&apos;oh! Something went wrong</h1>
+            <h1 className="text-3xl font-bold text-blue-900 mb-4">
+              D&apos;oh! Something went wrong
+            </h1>
             <p className="text-xl text-red-600 mb-6">{error}</p>
-            <button 
-              onClick={() => window.location.reload()} 
+            <button
+              onClick={() => window.location.reload()}
               className="bg-blue-900 text-white px-6 py-3 rounded-full text-lg font-bold hover:bg-blue-800 transition-colors"
             >
               Try Again
@@ -83,12 +100,19 @@ export default function CharactersPage() {
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-4">
             Simpsons Characters
           </h1>
-          <h2 className="text-2xl font-bold text-blue-900 mb-4">Coming soon...</h2>
+          <h2 className="text-2xl font-bold text-blue-900 mb-4">
+            Coming soon...
+          </h2>
           <p className="text-xl text-blue-800 max-w-2xl mx-auto">
-            Meet the residents of Springfield! Total characters: {characters.length}
+            Meet the residents of Springfield! Total characters:{' '}
+            {characters.length}
           </p>
           <p className="pt-2 text-xl text-blue-800 max-w-2xl mx-auto">
-            Currenly looking for cleaner data <a className="font-bold text-blue-900 hover:underline" href="/api/characters">
+            Currenly looking for cleaner data{' '}
+            <a
+              className="font-bold text-blue-900 hover:underline"
+              href="/api/characters"
+            >
               characters API
             </a>
           </p>
@@ -96,8 +120,8 @@ export default function CharactersPage() {
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {characters.map(character => (
-            <div 
-              key={character.id || character.name} 
+            <div
+              key={character.id || character.name}
               className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow border-2 border-blue-900"
             >
               <div className="p-2 bg-yellow-400 text-blue-900 text-center font-bold truncate border-b-2 border-blue-900">
@@ -107,7 +131,7 @@ export default function CharactersPage() {
                 {/* <p className="text-sm text-gray-600 mb-2">
                   {character.normalized_name || 'Springfield Resident'}
                 </p> */}
-                <Link 
+                <Link
                   href={`/characters/${character.slug}`}
                   className="block text-center bg-blue-900 text-white text-xs py-2 px-4 rounded-full hover:bg-blue-800 transition-colors"
                 >

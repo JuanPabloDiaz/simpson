@@ -37,8 +37,11 @@ export async function GET() {
   // Transform Simpsons episodes data to match the expected format
   const transformedEpisodes = episodes.map(episode => {
     // Create a slug from the episode name
-    const slug = episode.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
-    
+    const slug = episode.name
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w-]/g, '')
+
     return {
       id: episode.id,
       name: episode.name,
@@ -48,7 +51,7 @@ export async function GET() {
       description: episode.description,
       rating: episode.rating,
       airDate: episode.airDate,
-      thumbnailUrl: episode.thumbnailUrl
+      thumbnailUrl: episode.thumbnailUrl,
     }
   })
 
@@ -57,7 +60,7 @@ export async function GET() {
   response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
   response.headers.set('Pragma', 'no-cache')
   response.headers.set('Expires', '0')
-  
+
   // Add CORS headers
   return setCorsHeaders(response)
 }
