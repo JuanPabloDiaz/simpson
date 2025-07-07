@@ -54,7 +54,7 @@ export default function EpisodesPage() {
                   Loading Simpsons Episodes...
                 </h1>
                 <p className="text-xl text-blue-800 animate-pulse">
-                  Getting ready to meet Springfield's finest!
+                  Getting ready to meet Springfield&apos;s finest!
                 </p>
               </div>
             </div>
